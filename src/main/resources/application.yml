@@ -1,0 +1,6 @@
+service:
+  port: 8080
+
+spring:
+  application:
+    name: ip-resource-management
