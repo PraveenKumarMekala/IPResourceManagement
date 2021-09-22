@@ -39,7 +39,7 @@ public class IpAddress {
     private Long upperBound;
 
     @OneToMany
-    @JoinColumn(name = "ipPoolId", referencedColumnName = "id")
+    @JoinColumn(name = "ipPoolId", referencedColumnName = "id", insertable = false, updatable = false)
     private List<IpPool> pools;
 
 }
