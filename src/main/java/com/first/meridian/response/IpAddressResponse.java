@@ -1,6 +1,6 @@
 package com.first.meridian.response;
 
-import com.first.meridian.domain.IpPool;
+import com.first.meridian.domain.IpAddress;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +16,6 @@ public class IpAddressResponse {
 
     private Long poolId;
 
-    private List<IpPool> pools;
+    private List<IpAddress> ipAddresses;
 
 }

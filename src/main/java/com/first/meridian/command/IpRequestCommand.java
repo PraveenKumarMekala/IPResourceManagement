@@ -11,7 +11,7 @@ public class IpRequestCommand {
 
     private Long poolId;
 
-    private Long numberOfPoolsToCreate;
+    private Long numberOfAddressToCreate;
 
     private String description;
 }
