@@ -17,13 +17,13 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
-public class IpServiceTest {
+public class IpPoolWriteServiceTest {
 
     @Mock
     private IpPoolRepository repository;
 
     @InjectMocks
-    private IpWriteService service;
+    private IpPoolWriteService service;
 
     private ArgumentCaptor<IpPool> captor = ArgumentCaptor.forClass(IpPool.class);
 

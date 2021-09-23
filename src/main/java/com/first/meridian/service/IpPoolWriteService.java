@@ -18,9 +18,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class IpWriteService {
+public class IpPoolWriteService {
 
-    private static final Logger logger = LoggerFactory.getLogger(IpWriteService.class);
+    private static final Logger logger = LoggerFactory.getLogger(IpPoolWriteService.class);
 
     public static final Long TOTAL_POOL_CAPACITY = 250L;
 

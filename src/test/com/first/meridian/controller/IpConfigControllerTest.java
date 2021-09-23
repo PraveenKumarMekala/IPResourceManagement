@@ -1,6 +1,7 @@
 package com.first.meridian.controller;
 
-import com.first.meridian.service.IpWriteService;
+import com.first.meridian.service.IpPoolReadService;
+import com.first.meridian.service.IpPoolWriteService;
 import com.first.meridian.util.IpConfigTestUtils;
 import lombok.val;
 import org.junit.Test;
@@ -11,14 +12,16 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
-import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.http.HttpStatus.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class IpConfigControllerTest {
 
     @Mock
-    private IpWriteService service;
+    private IpPoolWriteService service;
+
+    @Mock
+    private IpPoolReadService readService;
 
     @InjectMocks
     private IpConfigController configController;
@@ -48,9 +51,21 @@ public class IpConfigControllerTest {
         // When
         val response = configController.createIpAddresses(command);
         // Then
-        assertThat(response.getStatusCode()).isEqualTo(OK);
+        assertThat(response.getStatusCode()).isEqualTo(CREATED);
         assertThat(response.getBody().getPoolId()).isEqualTo(command.getPoolId());
         assertThat(response.getBody().getResponseMessage()).isEqualTo(ipAddressResponse.getResponseMessage());
         assertThat(response.getBody().getIpAddresses().size()).isEqualTo(ipAddressResponse.getIpAddresses().size());
+    }
+
+    @Test
+    public void should_read_ip_pool_address_data() {
+        // Given
+        when(readService.findByPoolId(1L)).thenReturn(IpConfigTestUtils.ipPoolAndAddressResponse());
+        //When
+        val response = configController.getPoolById(1L);
+        // Then
+        assertThat(response.getStatusCode()).isEqualTo(OK);
+        assertThat(response.getBody().getId()).isEqualTo(1L);
+        assertThat(response.getBody().getUsedCapacity()).isEqualTo(250L);
     }
 }

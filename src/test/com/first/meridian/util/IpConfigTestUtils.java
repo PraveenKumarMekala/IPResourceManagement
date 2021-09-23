@@ -5,6 +5,7 @@ import com.first.meridian.domain.IpAddress;
 import com.first.meridian.domain.IpAddressId;
 import com.first.meridian.domain.IpPool;
 import com.first.meridian.response.IpAddressResponse;
+import com.first.meridian.response.IpPoolAndAddressResponse;
 
 import java.util.Arrays;
 
@@ -51,6 +52,18 @@ public class IpConfigTestUtils {
                 .id(1L)
                 .ipAddresses(asList(ipAddress()))
                 .usedCapacity(150L)
+                .build();
+    }
+
+
+    public static IpPoolAndAddressResponse ipPoolAndAddressResponse() {
+        return IpPoolAndAddressResponse.builder()
+                .id(1L)
+                .description("test")
+                .lowerBound(0L)
+                .upperBound(250L)
+                .usedCapacity(250L)
+                .ipAddresses(asList(ipAddress()))
                 .build();
     }
 }
