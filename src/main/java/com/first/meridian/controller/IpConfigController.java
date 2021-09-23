@@ -31,13 +31,13 @@ public class IpConfigController {
             description = "System will create requested number of pool id, minimum of 1 and maximum of 250")
     public ResponseEntity<IpAddressResponse> createIpAddresses(@RequestBody IpRequestCommand command) {
         logger.info("Request received to create ip address for ip id {}", command.getPoolId());
-        if (ipService.isInvalidPoolIdAndRequestedPools(command.getPoolId(), command.getNumberOfPoolsToCreate())) {
+        if (ipService.isInvalidPoolIdAndRequestedPools(command.getPoolId(), command.getNumberOfAddressToCreate())) {
             return status(HttpStatus.BAD_REQUEST).body(IpAddressResponse.builder()
                     .poolId(command.getPoolId())
                     .responseMessage("Invalid pool id or size requested is exceeded")
                     .build());
         } else {
-            return status(HttpStatus.OK).body(IpAddressResponse.builder().build());
+            return status(HttpStatus.OK).body(ipService.createIpAddress(command));
         }
 
     }
