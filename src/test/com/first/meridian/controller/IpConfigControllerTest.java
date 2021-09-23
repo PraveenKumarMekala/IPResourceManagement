@@ -1,6 +1,6 @@
 package com.first.meridian.controller;
 
-import com.first.meridian.service.IpService;
+import com.first.meridian.service.IpWriteService;
 import com.first.meridian.util.IpConfigTestUtils;
 import lombok.val;
 import org.junit.Test;
@@ -18,7 +18,7 @@ import static org.springframework.http.HttpStatus.OK;
 public class IpConfigControllerTest {
 
     @Mock
-    private IpService service;
+    private IpWriteService service;
 
     @InjectMocks
     private IpConfigController configController;

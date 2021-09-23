@@ -1,6 +1,5 @@
 package com.first.meridian.service;
 
-import com.first.meridian.domain.IpAddress;
 import com.first.meridian.domain.IpPool;
 import com.first.meridian.repository.IpPoolRepository;
 import com.first.meridian.util.IpConfigTestUtils;
@@ -24,7 +23,7 @@ public class IpServiceTest {
     private IpPoolRepository repository;
 
     @InjectMocks
-    private IpService service;
+    private IpWriteService service;
 
     private ArgumentCaptor<IpPool> captor = ArgumentCaptor.forClass(IpPool.class);
 
